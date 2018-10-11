@@ -2,7 +2,7 @@ var arrProduk = [];
 var arrJmlProduk = [];
 
 class Cart {
-    constructor(produk, jumlah){
+    constructor(){
         this.tambahProduk = (produk, jumlah) => {
             if(arrProduk.includes(produk)){
                 var newJml = arrJmlProduk[arrProduk.indexOf(produk)] + jumlah
@@ -19,7 +19,7 @@ class Cart {
                     arrProduk.splice(arrProduk.indexOf(produk),1)
                 }
             }
-            setTimeout(hapus , 800)
+            setTimeout(hapus , 1)
         }
         this.tampilkanCart=() =>{ 
 
@@ -28,7 +28,7 @@ class Cart {
                     console.log(arrProduk[i], `(${arrJmlProduk[i]})`)
                 }
             }    
-            setTimeout(showCart, 1200)
+            setTimeout(showCart, 2)
     
         }
     }
@@ -46,5 +46,3 @@ keranjang.hapusProduk('Kemeja Hitam');
 keranjang.hapusProduk('Baju Hijau');
 
 keranjang.tampilkanCart();
-// console.log(arrJmlProduk)
-// console.log(arrProduk)
