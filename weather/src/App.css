@@ -1,0 +1,74 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.tftable {
+  font-size:12px;
+  color:#333333;
+  display:inline-block;
+  width:200px;
+  border-width: 1px;
+  border-color: #729ea5;
+  border-collapse: collapse;
+  margin-right:20px;
+}
+
+.tftable th {
+  font-size:12px;
+  background-color:#acc8cc;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #729ea5;
+  text-align:left;
+  width:200px;
+}
+
+.tftable tr {
+  background-color:#d4e3e5;
+  width:200px;
+}
+
+.tftable td {
+  font-size:12px;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #729ea5;
+  width:200px;
+}
+
+.tftable tr:hover {
+  background-color:#ffffff;
+}
+
