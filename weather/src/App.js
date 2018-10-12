@@ -62,63 +62,34 @@ class App extends Component {
 					// API returned only 39 data as of 7.10 12-Oct-18 so an if else statement is used
 
 					if(this.state.data[i+7] !== undefined){
-						// variabel untuk mendapatkan rerata suhu harian
-						var suhu = 	((
-										this.state.data[i].main.temp + 
-										this.state.data[i+1].main.temp +
-										this.state.data[i+2].main.temp +
-										this.state.data[i+3].main.temp +
-										this.state.data[i+4].main.temp +
-										this.state.data[i+5].main.temp +
-										this.state.data[i+6].main.temp +
-										this.state.data[i+7].main.temp 
-									)/8).toFixed(2)
+						// variabel untuk mendapatkan rerata suhu & perbedaan harian
+						var suhu = 0;
+						var deltaSuhu = 0;
 
-						// variabel untuk mendapatkan rerata delta suhu harian
-						var deltaSuhu = ((
-											this.state.data[i].main.temp_kf + 
-											this.state.data[i+1].main.temp_kf +
-											this.state.data[i+2].main.temp_kf +
-											this.state.data[i+3].main.temp_kf +
-											this.state.data[i+4].main.temp_kf +
-											this.state.data[i+5].main.temp_kf +
-											this.state.data[i+6].main.temp_kf +
-											this.state.data[i+7].main.temp_kf 
-										)/8).toFixed(2)
+						for(var k=0; k<7; k++){
+							suhu += this.state.data[i+k].main.temp
+							deltaSuhu += this.state.data[i+k].main.temp_kf
+						}	
 
 						child.push(
 							<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
-							<td key={(i+1)*1.2}>{suhu}C</td>,
-							<td key={(i+1)*1.3}>{deltaSuhu}C</td>
+							<td key={(i+1)*1.2}>{(suhu/8).toFixed(2)}C</td>,
+							<td key={(i+1)*1.3}>{(deltaSuhu/8).toFixed(2)}C</td>
 						)
 					}
-					// variabel untuk mendapatkan rerata suhu harian
 					else{
-						var suhu2 = 	((
-										this.state.data[i].main.temp + 
-										this.state.data[i+1].main.temp +
-										this.state.data[i+2].main.temp +
-										this.state.data[i+3].main.temp +
-										this.state.data[i+4].main.temp +
-										this.state.data[i+5].main.temp +
-										this.state.data[i+6].main.temp 
-									)/7).toFixed(2)
+						var suhu2 = 0;
+						var deltaSuhu2 = 0;
 
-						// variabel untuk mendapatkan rerata delta suhu harian
-						var deltaSuhu2 = ((
-											this.state.data[i].main.temp_kf + 
-											this.state.data[i+1].main.temp_kf +
-											this.state.data[i+2].main.temp_kf +
-											this.state.data[i+3].main.temp_kf +
-											this.state.data[i+4].main.temp_kf +
-											this.state.data[i+5].main.temp_kf +
-											this.state.data[i+6].main.temp_kf 
-										)/7).toFixed(2)
+						for(var k=0; k<7; k++){
+							suhu2 += this.state.data[i+k].main.temp
+							deltaSuhu2 += this.state.data[i+k].main.temp_kf
+						}	
 
 						child.push(
 							<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
-							<td key={(i+1)*1.2}>{suhu2}C</td>,
-							<td key={(i+1)*1.3}>{deltaSuhu2}C</td>
+							<td key={(i+1)*1.2}>{(suhu2/7).toFixed(2)}C</td>,
+							<td key={(i+1)*1.3}>{(deltaSuhu2/7).toFixed(2)}C</td>
 						)
 					}
 				}
