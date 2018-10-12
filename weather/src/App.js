@@ -60,8 +60,6 @@ class App extends Component {
 
 				for(let j=0; j<1; j++){
 					// API returned only 39 data as of 7.10 12-Oct-18 so an if else statement and count variable is used
-
-					// variabel untuk mendapatkan rerata suhu & perbedaan harian
 					var suhu = 0;
 					var deltaSuhu = 0;
 					var count = 0
