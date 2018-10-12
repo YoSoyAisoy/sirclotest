@@ -44,7 +44,6 @@
 			})
 		}
 		var avgDeltaSuhu = (totalDeltaSuhu/this.state.data.length)
-		console.log()
 		if(isNaN(avgDeltaSuhu)){
 			return '-'
 		}
