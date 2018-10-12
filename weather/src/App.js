@@ -102,7 +102,7 @@ class App extends Component {
 										this.state.data[i+4].main.temp +
 										this.state.data[i+5].main.temp +
 										this.state.data[i+6].main.temp 
-									)/8).toFixed(2)
+									)/7).toFixed(2)
 
 						// variabel untuk mendapatkan rerata delta suhu harian
 						var deltaSuhu2 = ((
@@ -113,7 +113,7 @@ class App extends Component {
 											this.state.data[i+4].main.temp_kf +
 											this.state.data[i+5].main.temp_kf +
 											this.state.data[i+6].main.temp_kf 
-										)/8).toFixed(2)
+										)/7).toFixed(2)
 
 						child.push(
 							<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
