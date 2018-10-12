@@ -65,6 +65,7 @@ class App extends Component {
 					var suhu = 0;
 					var deltaSuhu = 0;
 					var count = 0
+
 					for(var k=0; k<8; k++){
 						if(this.state.data[i+k] !== undefined){
 							suhu += this.state.data[i+k].main.temp
@@ -72,13 +73,11 @@ class App extends Component {
 							count++
 						}
 					}	
-
 					child.push(
 						<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
 						<td key={(i+1)*1.2}>{(suhu/count).toFixed(2)}C</td>,
 						<td key={(i+1)*1.3}>{(deltaSuhu/count).toFixed(2)}C</td>
 					)
-
 					count = 0;
 				}
 				table.push(<tr key={i}>{child}</tr>)
