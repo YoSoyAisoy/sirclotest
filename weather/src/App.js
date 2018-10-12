@@ -59,39 +59,27 @@ class App extends Component {
 				var getTanggal = new Date((this.state.data[i].dt)*1000)
 
 				for(let j=0; j<1; j++){
-					// API returned only 39 data as of 7.10 12-Oct-18 so an if else statement is used
+					// API returned only 39 data as of 7.10 12-Oct-18 so an if else statement and count variable is used
 
-					if(this.state.data[i+7] !== undefined){
-						// variabel untuk mendapatkan rerata suhu & perbedaan harian
-						var suhu = 0;
-						var deltaSuhu = 0;
-
-						for(var k=0; k<7; k++){
+					// variabel untuk mendapatkan rerata suhu & perbedaan harian
+					var suhu = 0;
+					var deltaSuhu = 0;
+					var count = 0
+					for(var k=0; k<8; k++){
+						if(this.state.data[i+k] !== undefined){
 							suhu += this.state.data[i+k].main.temp
 							deltaSuhu += this.state.data[i+k].main.temp_kf
-						}	
+							count++
+						}
+					}	
 
-						child.push(
-							<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
-							<td key={(i+1)*1.2}>{(suhu/8).toFixed(2)}C</td>,
-							<td key={(i+1)*1.3}>{(deltaSuhu/8).toFixed(2)}C</td>
-						)
-					}
-					else{
-						var suhu2 = 0;
-						var deltaSuhu2 = 0;
+					child.push(
+						<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
+						<td key={(i+1)*1.2}>{(suhu/count).toFixed(2)}C</td>,
+						<td key={(i+1)*1.3}>{(deltaSuhu/count).toFixed(2)}C</td>
+					)
 
-						for(var k=0; k<7; k++){
-							suhu2 += this.state.data[i+k].main.temp
-							deltaSuhu2 += this.state.data[i+k].main.temp_kf
-						}	
-
-						child.push(
-							<td key={(i+1)*1.1} >{getTanggal.getFullYear()}-{getTanggal.getMonth()}-{getTanggal.getDate()}</td>,
-							<td key={(i+1)*1.2}>{(suhu2/7).toFixed(2)}C</td>,
-							<td key={(i+1)*1.3}>{(deltaSuhu2/7).toFixed(2)}C</td>
-						)
-					}
+					count = 0;
 				}
 				table.push(<tr key={i}>{child}</tr>)
 			}
@@ -139,4 +127,4 @@ class App extends Component {
 	}
 }
 
-	export default App;
+export default App;
